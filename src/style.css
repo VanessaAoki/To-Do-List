@@ -12,7 +12,7 @@ body {
   font-size: 15px;
 }
 
-.to-do-container { 
+.to-do-container {
   position: relative;
   width: 500px;
   margin: 2em auto;
@@ -25,7 +25,7 @@ body {
   margin: 0;
   font-size: 15px;
   font-weight: normal;
-} 
+}
 
 #to-do-form {
   display: flex;
@@ -35,7 +35,7 @@ body {
   border-bottom: var(--bottom-line);
 }
 
-.to-do-input { 
+.to-do-input {
   border: 0;
   padding: 0.7em 1em;
   outline: 0;
@@ -45,7 +45,7 @@ body {
 
 .svg-inline--fa { color: rgb(185, 185, 185); }
 
-.submit-button { 
+.submit-button {
   border: 0;
   background-color: inherit;
   margin-right: 0.5em;
@@ -75,7 +75,7 @@ body {
 .to-do-clear {
   width: 100%;
   text-align: center;
-  border: 0; 
+  border: 0;
   padding: 1em;
   background-color: rgb(225, 225, 225);
   color: rgb(150, 150, 150);
