@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --bottom-line: 1px solid rgb(185, 185, 185);
+}
+
+html { width: 100vw; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  font-size: 15px;
+}
+
+.to-do-container {
+  position: relative;
+  width: 500px;
+  margin: 2em auto;
+  box-shadow: 0 0 1em rgb(185, 185, 185);
+}
+
+.to-do-container > h1 {
+  border-bottom: var(--bottom-line);
+  padding: 0.7em 1em;
+  margin: 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#to-do-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: var(--bottom-line);
+}
+
+.to-do-input {
+  border: 0;
+  padding: 0.7em 1em;
+  outline: 0;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.svg-inline--fa { color: rgb(185, 185, 185); }
+
+.submit-button {
+  border: 0;
+  background-color: inherit;
+  margin-right: 0.5em;
+}
+
+#to-do-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--bottom-line);
+  padding: 0 1em;
+}
+
+.checkbox-description-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-description-container > p { margin: 0.7em; }
+
+.to-do-clear {
+  width: 100%;
+  text-align: center;
+  border: 0;
+  padding: 1em;
+  background-color: rgb(225, 225, 225);
+  color: rgb(150, 150, 150);
+  font-size: 15px;
+}
