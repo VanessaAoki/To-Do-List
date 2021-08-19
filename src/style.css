@@ -12,6 +12,10 @@ body {
   font-size: 15px;
 }
 
+button { cursor: pointer; }
+
+i { pointer-events: none; }
+
 .to-do-container {
   position: relative;
   width: 500px;
@@ -35,7 +39,7 @@ body {
   border-bottom: var(--bottom-line);
 }
 
-.to-do-input {
+#to-do-input {
   border: 0;
   padding: 0.7em 1em;
   outline: 0;
@@ -45,7 +49,8 @@ body {
 
 .svg-inline--fa { color: rgb(185, 185, 185); }
 
-.submit-button {
+#submit-button,
+.move-button {
   border: 0;
   background-color: inherit;
   margin-right: 0.5em;
@@ -80,4 +85,9 @@ body {
   background-color: rgb(225, 225, 225);
   color: rgb(150, 150, 150);
   font-size: 15px;
+}
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.5;
 }

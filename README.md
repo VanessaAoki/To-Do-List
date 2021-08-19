@@ -44,7 +44,7 @@ $ git clone git@github.com:VanessaAoki/To-Do-List.git
 
 ```sh
 $ cd To-Do-List
-$ npm build
+$ npm install
 $ cd dist
 ```
 <details align="right">
