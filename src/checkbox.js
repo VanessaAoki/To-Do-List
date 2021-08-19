@@ -7,10 +7,9 @@ export default function checkTodo(todo) {
 
 const list = document.getElementById('to-do-list');
 
-list.addEventListener('change', function(e) {
+list.addEventListener('change', (e) => {
   const item = e.target;
   if (item.classList[0] === 'checkbox-input') {
-    console.log(item.classList[0])
     const item2 = item.parentElement;
     item2.classList.toggle('completed-task');
     checkTodo(item2);

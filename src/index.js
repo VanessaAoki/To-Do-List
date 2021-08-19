@@ -1,10 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './style.css';
-import './checkbox.js';
+import './checkbox';
 
 let myToDo = [];
 
@@ -16,10 +18,6 @@ if (localStorage.myToDo !== undefined) {
 const list = document.getElementById('to-do-list');
 const toDoButton = document.getElementById('submit-button');
 const toDoInput = document.getElementById('to-do-input');
-
-// Event Listeners
-window.addEventListener('DOMContentLoaded', renderList);
-toDoButton.addEventListener('click', addToDo);
 
 // Functions
 function renderList() {
@@ -49,3 +47,7 @@ function addToDo(e) {
   localStorage.myToDo = JSON.stringify(myToDo);
   toDoInput.value = '';
 }
+
+// Event Listeners
+window.addEventListener('DOMContentLoaded', renderList);
+toDoButton.addEventListener('click', addToDo);
