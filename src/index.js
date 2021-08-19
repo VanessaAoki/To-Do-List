@@ -4,33 +4,30 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './style.css';
+import './modules/checkbox';
 
-const myToDo = [
-  {
-    description: 'wash the dishes',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'complete To Do list project',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'attend stand up meeting',
-    completed: false,
-    index: 2,
-  },
-];
+let myToDo = [];
 
+if (localStorage.myToDo !== undefined) {
+  myToDo = JSON.parse(localStorage.myToDo);
+}
+
+// Selectors
+const list = document.getElementById('to-do-list');
+const toDoButton = document.getElementById('submit-button');
+const toDoInput = document.getElementById('to-do-input');
+
+// Event Listeners
+window.addEventListener('DOMContentLoaded', renderList);
+toDoButton.addEventListener('click', addToDo);
+
+// Functions
 function renderList() {
-  const list = document.getElementById('to-do-list');
-  list.innerHTML = '';
   myToDo.forEach((todo) => {
     list.innerHTML += `
     <li class="task-container">
       <div class="checkbox-description-container">
-        <input type="checkbox">
+        <input type="checkbox" class="checkbox-input">
         <p>${todo.description}</p>
       </div>
       <i class="fas fa-ellipsis-v"></i>
@@ -38,4 +35,16 @@ function renderList() {
   });
 }
 
-window.addEventListener('load', renderList);
+function addToDo() {
+  const description = toDoInput.value;
+  const index = myToDo.length;
+  myToDo.push({
+    description,
+    completed: false,
+    index,
+  });
+  list.innerHTML = '';
+  renderList();
+  localStorage.myToDo = JSON.stringify(myToDo);
+  toDoInput.value = '';
+}
