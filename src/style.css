@@ -86,3 +86,8 @@ i { pointer-events: none; }
   color: rgb(150, 150, 150);
   font-size: 15px;
 }
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

@@ -26,8 +26,8 @@ function renderList() {
   myToDo.forEach((todo) => {
     list.innerHTML += `
     <li class="task-container">
-      <div class="checkbox-description-container">
-        <input type="checkbox" class="checkbox-input">
+      <div class="checkbox-description-container ${todo.completed ? 'completed-task' : ''}">
+        <input type="checkbox" class="checkbox-input" ${todo.completed ? 'checked' : ''}>
         <p>${todo.description}</p>
       </div>
       <i class="fas fa-ellipsis-v"></i>
