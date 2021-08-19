@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './style.css';
-import './modules/checkbox';
+import './checkbox.js';
 
 let myToDo = [];
 
@@ -35,7 +35,8 @@ function renderList() {
   });
 }
 
-function addToDo() {
+function addToDo(e) {
+  e.preventDefault();
   const description = toDoInput.value;
   const index = myToDo.length;
   myToDo.push({
