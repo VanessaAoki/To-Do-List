@@ -41,10 +41,11 @@ i { pointer-events: none; }
 
 #to-do-input {
   border: 0;
-  padding: 0.7em 1em;
+  padding: 0.7em 1.2em;
   outline: 0;
   font-style: italic;
-  font-size: 15px;
+  font-size: 14px;
+  width: 80%;
 }
 
 .svg-inline--fa { color: rgb(185, 185, 185); }
@@ -55,6 +56,8 @@ i { pointer-events: none; }
   background-color: inherit;
   margin-right: 0.5em;
 }
+
+#submit-button { margin-right: 0.75em; }
 
 #to-do-list {
   list-style: none;
@@ -67,7 +70,7 @@ i { pointer-events: none; }
   justify-content: space-between;
   align-items: center;
   border-bottom: var(--bottom-line);
-  padding: 0 1em;
+  padding: 0 0.5em 0 1em;
 }
 
 .checkbox-description-container {

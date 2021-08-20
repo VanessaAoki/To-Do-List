@@ -70,7 +70,8 @@ function destroyBook (index) {
 
 function updateLocalStorage() {
   localStorage.myToDo = JSON.stringify(myToDo);
-  document.location.reload(true);
+  document.location.reload();
+  return false;
 }
 
 function addToDo(e) {
