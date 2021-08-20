@@ -28,6 +28,7 @@ function renderList() {
         <input type="checkbox" class="checkbox-input" ${todo.completed ? 'checked' : ''}>
         <p>${todo.description}</p>
       </div>
+      <button id="brnPrepend">delete</button>
       <i class="fas fa-ellipsis-v"></i>
     </li>`;
   });
@@ -48,6 +49,16 @@ function addToDo(e) {
   toDoInput.value = '';
 }
 
+function destroyBook() {
+  console.log('test')
+
+}
+
 // Event Listeners
 window.addEventListener('DOMContentLoaded', renderList);
 toDoButton.addEventListener('click', addToDo);
+document.addEventListener('click', function(e) {
+  if(e.target && e.target.id== 'brnPrepend') {
+    destroyBook();
+  }
+});
