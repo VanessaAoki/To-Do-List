@@ -1,3 +1,9 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable func-names */
+/* eslint-disable no-plusplus */
+
 import './checkbox';
 
 let myToDo = [];
@@ -15,11 +21,11 @@ const toDoClear = document.getElementById('to-do-clear');
 // Functions
 function renderList() {
   myToDo.forEach((todo) => {
-      // li .task-container
+    // li .task-container
     const newTodo = document.createElement('li');
     newTodo.classList.add('task-container');
     list.appendChild(newTodo);
-      // div .checkbox-description-container
+    // div .checkbox-description-container
     const checkDiv = document.createElement('div');
     checkDiv.classList.add('checkbox-description-container');
     newTodo.appendChild(checkDiv);
@@ -38,44 +44,41 @@ function renderList() {
     checkDiv.appendChild(pDescription);
     pDescription.addEventListener('keydown', (e) => {
       const newDescription = pDescription.value;
-      if (e.keyCode == 13) {
-      const oldToDo = JSON.parse(localStorage.myToDo);
-      oldToDo[todo.index].description = newDescription;
-      localStorage.setItem("myToDo", JSON.stringify(oldToDo));
+      if (e.keyCode === 13) {
+        const oldToDo = JSON.parse(localStorage.myToDo);
+        oldToDo[todo.index].description = newDescription;
+        localStorage.setItem('myToDo', JSON.stringify(oldToDo));
       }
-    })
-      // div .buttons-container
+    });
+    // div .buttons-container
     const buttonsDiv = document.createElement('div');
     buttonsDiv.classList.add('show');
     newTodo.appendChild(buttonsDiv);
-      // div .edit-buttons-container
+    // div .edit-buttons-container
     const editButtonsDiv = document.createElement('div');
     editButtonsDiv.setAttribute('id', `edit-buttons-${todo.index}`);
     editButtonsDiv.classList.add('hidden');
     editButtonsDiv.classList.add(`buttons-container-${todo.index}`);
     buttonsDiv.appendChild(editButtonsDiv);
-      // Button delete
+    // Button delete
     const buttonDelete = document.createElement('button');
     buttonDelete.classList.add('delete-button');
     buttonDelete.innerHTML = '<i class="fas fa-trash-alt"></i>';
-    buttonDelete.onclick = function() { deleteTodo(todo.index); };
+    buttonDelete.onclick = function () { deleteTodo(todo.index); };
     editButtonsDiv.appendChild(buttonDelete);
-      // button menu .ellipsis
+    // button menu .ellipsis
     const buttonMenu = document.createElement('button');
     buttonMenu.classList.add(`move-button-${todo.index}`);
     buttonMenu.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
-    buttonMenu.onclick = function() { showButtons(todo.index); };
+    buttonMenu.onclick = function () { showButtons(todo.index); };
     buttonsDiv.appendChild(buttonMenu);
   });
 }
 
-function deleteTodo (index) {
-  myToDo.splice(index, 1);
-  updateIndex();
-}
-
-function showButtons (index) {
-  document.querySelector(`.buttons-container-${index}`).classList.toggle('hidden');
+function updateLocalStorage() {
+  localStorage.myToDo = JSON.stringify(myToDo);
+  document.location.reload();
+  return false;
 }
 
 function updateIndex() {
@@ -87,16 +90,19 @@ function updateIndex() {
   updateLocalStorage();
 }
 
-function clearCompleted() {
-  myToDo = JSON.parse(localStorage.myToDo);
-  myToDo = myToDo.filter((todo) => (todo.completed == false));
-  updateLocalStorage();
+function deleteTodo(index) {
+  myToDo.splice(index, 1);
+  updateIndex();
 }
 
-function updateLocalStorage() {
-  localStorage.myToDo = JSON.stringify(myToDo);
-  document.location.reload();
-  return false;
+function showButtons(index) {
+  document.querySelector(`.buttons-container-${index}`).classList.toggle('hidden');
+}
+
+function clearCompleted() {
+  myToDo = JSON.parse(localStorage.myToDo);
+  myToDo = myToDo.filter((todo) => (todo.completed === false));
+  updateLocalStorage();
 }
 
 function addToDo(e) {

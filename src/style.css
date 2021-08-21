@@ -12,8 +12,6 @@ body {
   font-size: 15px;
 }
 
-button { cursor: pointer; }
-
 i { pointer-events: none; }
 
 .to-do-container {
@@ -51,7 +49,7 @@ i { pointer-events: none; }
 
 .edit-input {
   font-style: normal;
-  font-style: 15px;
+  font-size: 15px;
 }
 
 .svg-inline--fa { color: rgb(185, 185, 185); }
@@ -60,23 +58,24 @@ button {
   border: 0;
   background-color: inherit;
   margin-right: 0.5em;
+  cursor: pointer;
 }
 
 #submit-button { margin-right: 0.75em; }
 
 .fa-pencil-alt,
-.fa-trash-alt { 
+.fa-trash-alt {
   opacity: 0.8;
   transition: 0.3s;
 }
 
+.fa-trash-alt { color: rgb(255, 100, 100); }
+
 .fa-pencil-alt:hover,
-.fa-trash-alt:hover { 
+.fa-trash-alt:hover {
   opacity: 1;
   font-size: 18px;
 }
-
-.fa-trash-alt { color: rgb(255, 100, 100); }
 
 #to-do-list {
   list-style: none;
