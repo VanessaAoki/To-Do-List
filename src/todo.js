@@ -30,11 +30,20 @@ function renderList() {
     checkbox.type = 'checkbox';
     checkbox.checked = (`${todo.completed ? 'true' : ''}`);
     checkDiv.appendChild(checkbox);
-      // p
-    const pDescription = document.createElement('p');
+      // input-description
+    const pDescription = document.createElement('input');
     pDescription.classList.add(`description-${todo.index}`);
-    pDescription.innerText = todo.description;
+    pDescription.value = todo.description;
+    pDescription.classList.add('edit-input');
     checkDiv.appendChild(pDescription);
+    pDescription.addEventListener('keydown', (e) => {
+      const newDescription = pDescription.value;
+      if (e.keyCode == 13) {
+      const oldToDo = JSON.parse(localStorage.myToDo);
+      oldToDo[todo.index].description = newDescription;
+      localStorage.setItem("myToDo", JSON.stringify(oldToDo));
+      }
+    })
       // div .buttons-container
     const buttonsDiv = document.createElement('div');
     buttonsDiv.classList.add('show');
@@ -45,12 +54,6 @@ function renderList() {
     editButtonsDiv.classList.add('hidden');
     editButtonsDiv.classList.add(`buttons-container-${todo.index}`);
     buttonsDiv.appendChild(editButtonsDiv);
-      // Button edit
-    const buttonEdit = document.createElement('button');
-    buttonEdit.classList.add('edit-button');
-    buttonEdit.innerHTML = '<i class="fas fa-pencil-alt"></i>';
-    buttonEdit.onclick = function() { editToDo(todo.index, todo.description); };
-    editButtonsDiv.appendChild(buttonEdit);
       // Button delete
     const buttonDelete = document.createElement('button');
     buttonDelete.classList.add('delete-button');
@@ -75,22 +78,6 @@ function showButtons (index) {
   document.querySelector(`.buttons-container-${index}`).classList.toggle('hidden');
 }
 
-function editToDo(index, value) {
-  document.querySelector(`.description-${index}`).classList.toggle('hidden');
-  const checkDiv = document.querySelector('.checkbox-description-container');
-  const editInput = document.createElement('input');
-  checkDiv.appendChild(editInput);
-  editInput.classList.add('edit-input');
-  editInput.setAttribute('value', `${value}`);
-  
-}
-// const newDescription = descriptionInput.value;
-//   if (e.keyCode == 13) {
-//   const oldToDo = JSON.parse(localStorage.myToDo);
-//   oldToDo[todo.index].description = newDescription;
-//   localStorage.setItem("myToDo", JSON.stringify(oldToDo));
-//   }
-
 function updateIndex() {
   let counter = 0;
   myToDo.forEach((todo) => {
@@ -101,6 +88,7 @@ function updateIndex() {
 }
 
 function clearCompleted() {
+  myToDo = JSON.parse(localStorage.myToDo);
   myToDo = myToDo.filter((todo) => (todo.completed == false));
   updateLocalStorage();
 }

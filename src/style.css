@@ -49,6 +49,11 @@ i { pointer-events: none; }
   width: 80%;
 }
 
+.edit-input {
+  font-style: normal;
+  font-style: 15px;
+}
+
 .svg-inline--fa { color: rgb(185, 185, 185); }
 
 button {

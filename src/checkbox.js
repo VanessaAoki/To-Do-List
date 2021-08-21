@@ -1,6 +1,6 @@
 export default function checkTodo(todo) {
   const todos = JSON.parse(localStorage.getItem('myToDo'));
-  const todoIndex = todos.findIndex((item) => item.description === todo.children[1].innerText);
+  const todoIndex = todos.findIndex((item) => item.description === todo.children[1].value);
   todos[todoIndex].completed = !todos[todoIndex].completed;
   localStorage.setItem('myToDo', JSON.stringify(todos));
 }
