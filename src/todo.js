@@ -22,19 +22,19 @@ function renderList() {
       // div .checkbox-description-container
     const checkDiv = document.createElement('div');
     checkDiv.classList.add('checkbox-description-container');
-    checkDiv.classList.add(`${todo.completed ? 'completed-task' : 'checkbox-description-container'}`);
     newTodo.appendChild(checkDiv);
-      // input-checkbox
+    // input-checkbox
     const checkbox = document.createElement('input');
     checkbox.classList.add('checkbox-input');
     checkbox.type = 'checkbox';
     checkbox.checked = (`${todo.completed ? 'true' : ''}`);
     checkDiv.appendChild(checkbox);
-      // input-description
+    // input-description
     const pDescription = document.createElement('input');
     pDescription.classList.add(`description-${todo.index}`);
     pDescription.value = todo.description;
     pDescription.classList.add('edit-input');
+    pDescription.classList.add(`${todo.completed ? 'completed-task' : 'checkbox-description-container'}`);
     checkDiv.appendChild(pDescription);
     pDescription.addEventListener('keydown', (e) => {
       const newDescription = pDescription.value;
