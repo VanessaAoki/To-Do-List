@@ -12,8 +12,6 @@ body {
   font-size: 15px;
 }
 
-button { cursor: pointer; }
-
 i { pointer-events: none; }
 
 .to-do-container {
@@ -39,21 +37,44 @@ i { pointer-events: none; }
   border-bottom: var(--bottom-line);
 }
 
-#to-do-input {
+#to-do-input,
+.edit-input {
   border: 0;
-  padding: 0.7em 1em;
+  padding: 0.7em 1.2em;
   outline: 0;
   font-style: italic;
+  font-size: 14px;
+  width: 80%;
+}
+
+.edit-input {
+  font-style: normal;
   font-size: 15px;
 }
 
 .svg-inline--fa { color: rgb(185, 185, 185); }
 
-#submit-button,
-.move-button {
+button {
   border: 0;
   background-color: inherit;
   margin-right: 0.5em;
+  cursor: pointer;
+}
+
+#submit-button { margin-right: 0.75em; }
+
+.fa-pencil-alt,
+.fa-trash-alt {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.fa-trash-alt { color: rgb(255, 100, 100); }
+
+.fa-pencil-alt:hover,
+.fa-trash-alt:hover {
+  opacity: 1;
+  font-size: 18px;
 }
 
 #to-do-list {
@@ -67,7 +88,7 @@ i { pointer-events: none; }
   justify-content: space-between;
   align-items: center;
   border-bottom: var(--bottom-line);
-  padding: 0 1em;
+  padding: 0 0.5em 0 1em;
 }
 
 .checkbox-description-container {
@@ -77,7 +98,7 @@ i { pointer-events: none; }
 
 .checkbox-description-container > p { margin: 0.7em; }
 
-.to-do-clear {
+#to-do-clear {
   width: 100%;
   text-align: center;
   border: 0;
@@ -91,3 +112,7 @@ i { pointer-events: none; }
   text-decoration: line-through;
   opacity: 0.5;
 }
+
+.show { display: flex; }
+
+.hidden { display: none; }
