@@ -39,7 +39,8 @@ i { pointer-events: none; }
   border-bottom: var(--bottom-line);
 }
 
-#to-do-input {
+#to-do-input,
+.edit-input {
   border: 0;
   padding: 0.7em 1.2em;
   outline: 0;

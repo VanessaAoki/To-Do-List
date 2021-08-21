@@ -28,10 +28,11 @@ function renderList() {
     const checkbox = document.createElement('input');
     checkbox.classList.add('checkbox-input');
     checkbox.type = 'checkbox';
-    todo.completed ? 'checkbox.checked = true' : '';
+    checkbox.checked = (`${todo.completed ? 'true' : ''}`);
     checkDiv.appendChild(checkbox);
       // p
     const pDescription = document.createElement('p');
+    pDescription.classList.add(`description-${todo.index}`);
     pDescription.innerText = todo.description;
     checkDiv.appendChild(pDescription);
       // div .buttons-container
@@ -48,12 +49,13 @@ function renderList() {
     const buttonEdit = document.createElement('button');
     buttonEdit.classList.add('edit-button');
     buttonEdit.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+    buttonEdit.onclick = function() { editToDo(todo.index, todo.description); };
     editButtonsDiv.appendChild(buttonEdit);
       // Button delete
     const buttonDelete = document.createElement('button');
     buttonDelete.classList.add('delete-button');
     buttonDelete.innerHTML = '<i class="fas fa-trash-alt"></i>';
-    buttonDelete.onclick = function() { destroyBook(todo.index); };
+    buttonDelete.onclick = function() { deleteTodo(todo.index); };
     editButtonsDiv.appendChild(buttonDelete);
       // button menu .ellipsis
     const buttonMenu = document.createElement('button');
@@ -64,7 +66,7 @@ function renderList() {
   });
 }
 
-function destroyBook (index) {
+function deleteTodo (index) {
   myToDo.splice(index, 1);
   updateIndex();
 }
@@ -72,6 +74,22 @@ function destroyBook (index) {
 function showButtons (index) {
   document.querySelector(`.buttons-container-${index}`).classList.toggle('hidden');
 }
+
+function editToDo(index, value) {
+  document.querySelector(`.description-${index}`).classList.toggle('hidden');
+  const checkDiv = document.querySelector('.checkbox-description-container');
+  const editInput = document.createElement('input');
+  checkDiv.appendChild(editInput);
+  editInput.classList.add('edit-input');
+  editInput.setAttribute('value', `${value}`);
+  
+}
+// const newDescription = descriptionInput.value;
+//   if (e.keyCode == 13) {
+//   const oldToDo = JSON.parse(localStorage.myToDo);
+//   oldToDo[todo.index].description = newDescription;
+//   localStorage.setItem("myToDo", JSON.stringify(oldToDo));
+//   }
 
 function updateIndex() {
   let counter = 0;
