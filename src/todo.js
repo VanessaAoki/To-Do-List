@@ -4,13 +4,9 @@
 /* eslint-disable func-names */
 /* eslint-disable no-plusplus */
 
-import './checkbox';
+// import './checkbox';
 
-let myToDo = [];
-
-if (localStorage.myToDo !== undefined) {
-  myToDo = JSON.parse(localStorage.myToDo);
-}
+let myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
 
 // Selectors
 const list = document.getElementById('to-do-list');
@@ -78,7 +74,6 @@ function renderList() {
 function updateLocalStorage() {
   localStorage.myToDo = JSON.stringify(myToDo);
   document.location.reload();
-  return false;
 }
 
 function updateIndex() {
@@ -106,7 +101,9 @@ function clearCompleted() {
 }
 
 function addToDo(e) {
-  e.preventDefault();
+  // e.preventDefault();
+  const toDoInput = document.getElementById('to-do-input');
+  const list = document.getElementById('to-do-list');
   const description = toDoInput.value;
   const index = myToDo.length;
   myToDo.push({
@@ -120,6 +117,12 @@ function addToDo(e) {
 }
 
 // Event Listeners
-window.addEventListener('DOMContentLoaded', renderList);
-toDoButton.addEventListener('click', addToDo);
-toDoClear.addEventListener('click', clearCompleted);
+// window.addEventListener('DOMContentLoaded', renderList);
+// toDoButton.addEventListener('click', addToDo);
+// toDoClear.addEventListener('click', clearCompleted);
+
+// Jest exports
+module.exports = {
+  addToDo,
+  deleteTodo
+};
