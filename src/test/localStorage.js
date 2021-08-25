@@ -1,20 +1,20 @@
-let localStorageMock = (function() {
+// eslint-disable-next-line func-names
+const localStorageMock = (function () {
   let store = {};
 
   return {
-      getItem: function(key) {
-          return store[key] || null;
-      },
-      setItem: function(key, value) {
-          store[key] = value.toString();
-      },
-      clear: function() {
-          store = {};
-      }
+    getItem(key) {
+      return store[key] || null;
+    },
+    setItem(key, value) {
+      store[key] = value.toString();
+    },
+    clear() {
+      store = {};
+    },
   };
-
-})();
+}());
 
 Object.defineProperty(global, 'localStorage', {
-   value: localStorageMock
+  value: localStorageMock,
 });

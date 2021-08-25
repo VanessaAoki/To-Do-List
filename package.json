@@ -41,13 +41,17 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "jdom": "^3.2.1",
+    "jsdom": "^17.0.0",
     "lodash": "^4.17.21"
   },
   "main": "webpack.config.js",
   "jest": {
     "verbose": true,
     "preset": "react-native",
-    "setupFiles": ["./jest/setup.js"],
+    "setupFiles": [
+      "./jest/setup.js"
+    ],
     "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|lottie-react-native)"

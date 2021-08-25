@@ -16,6 +16,8 @@ const toDoClear = document.getElementById('to-do-clear');
 
 // Functions
 function renderList() {
+  const list = document.getElementById('to-do-list');
+  list.innerHTML = '';
   myToDo.forEach((todo) => {
     // li .task-container
     const newTodo = document.createElement('li');
@@ -72,8 +74,8 @@ function renderList() {
 }
 
 function updateLocalStorage() {
-  localStorage.myToDo = JSON.stringify(myToDo);
-  document.location.reload();
+  localStorage.setItem('myToDo', JSON.stringify(myToDo));
+  global.document.location.reload();
 }
 
 function updateIndex() {
@@ -124,5 +126,8 @@ function addToDo(e) {
 // Jest exports
 module.exports = {
   addToDo,
-  deleteTodo
+  deleteTodo,
+  renderList,
+  updateIndex,
+  updateLocalStorage,
 };
