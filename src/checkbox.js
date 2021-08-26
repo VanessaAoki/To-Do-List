@@ -5,13 +5,14 @@ export default function checkTodo(todo) {
   localStorage.setItem('myToDo', JSON.stringify(todos));
 }
 
-const list = document.getElementById('to-do-list');
-
-list.addEventListener('change', (e) => {
-  const item = e.target;
-  if (item.classList[0] === 'checkbox-input') {
-    const item2 = item.parentElement;
-    item2.classList.toggle('completed-task');
-    checkTodo(item2);
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const list = document.getElementById('to-do-list');
+  list.addEventListener('change', (e) => {
+    const item = e.target;
+    if (item.classList[0] === 'checkbox-input') {
+      const item2 = item.parentElement;
+      item2.classList.toggle('completed-task');
+      checkTodo(item2);
+    }
+  });
 });

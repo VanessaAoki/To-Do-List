@@ -6,20 +6,17 @@
 
 import './checkbox';
 
-let myToDo = [];
-
-if (localStorage.myToDo !== undefined) {
-  myToDo = JSON.parse(localStorage.myToDo);
-}
+let myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
 
 // Selectors
-const list = document.getElementById('to-do-list');
-const toDoButton = document.getElementById('submit-button');
-const toDoInput = document.getElementById('to-do-input');
-const toDoClear = document.getElementById('to-do-clear');
+
+let toDoButton = document.getElementById('submit-button');
+let toDoClear = document.getElementById('to-do-clear');
 
 // Functions
 function renderList() {
+  const list = document.getElementById('to-do-list');
+  list.innerHTML = '';
   myToDo.forEach((todo) => {
     // li .task-container
     const newTodo = document.createElement('li');
@@ -76,9 +73,10 @@ function renderList() {
 }
 
 function updateLocalStorage() {
-  localStorage.myToDo = JSON.stringify(myToDo);
-  document.location.reload();
-  return false;
+  localStorage.setItem('myToDo', JSON.stringify(myToDo));
+  myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
+  // global.document.location.reload();
+  renderList();
 }
 
 function updateIndex() {
@@ -102,11 +100,14 @@ function showButtons(index) {
 function clearCompleted() {
   myToDo = JSON.parse(localStorage.myToDo);
   myToDo = myToDo.filter((todo) => (todo.completed === false));
+  updateIndex();
   updateLocalStorage();
 }
 
 function addToDo(e) {
-  e.preventDefault();
+  // e.preventDefault();
+  const toDoInput = document.getElementById('to-do-input');
+  const list = document.getElementById('to-do-list');
   const description = toDoInput.value;
   const index = myToDo.length;
   myToDo.push({
@@ -121,5 +122,18 @@ function addToDo(e) {
 
 // Event Listeners
 window.addEventListener('DOMContentLoaded', renderList);
-toDoButton.addEventListener('click', addToDo);
-toDoClear.addEventListener('click', clearCompleted);
+document.addEventListener('DOMContentLoaded', () => {
+  toDoButton = document.getElementById('submit-button');
+  toDoClear = document.getElementById('to-do-clear');
+  toDoButton.addEventListener('click', addToDo);
+  toDoClear.addEventListener('click', clearCompleted);
+});
+
+// Jest exports
+module.exports = {
+  addToDo,
+  deleteTodo,
+  renderList,
+  updateIndex,
+  updateLocalStorage,
+};

@@ -4,7 +4,7 @@
   "description": "\"To-do list\" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "start": "webpack serve --open",
     "build": "webpack",
     "deploy": "npm run build && gh-pages -d dist"
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/VanessaAoki/To-Do-List#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.2.0",
@@ -29,6 +30,7 @@
     "eslint-plugin-import": "^2.24.0",
     "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
     "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -39,7 +41,23 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "jdom": "^3.2.1",
+    "jsdom": "^17.0.0",
     "lodash": "^4.17.21"
   },
-  "main": "webpack.config.js"
+  "main": "webpack.config.js",
+  "jest": {
+    "verbose": true,
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest/setup.js"
+    ],
+    "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|lottie-react-native)"
+    ],
+    "globals": {
+      "window": {}
+    }
+  }
 }
