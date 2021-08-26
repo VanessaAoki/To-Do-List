@@ -4,7 +4,7 @@
 /* eslint-disable func-names */
 /* eslint-disable no-plusplus */
 
-// import './checkbox';
+import './checkbox';
 
 let myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
 
