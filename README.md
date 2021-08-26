@@ -56,7 +56,7 @@ $ cd dist
 3. Open the `index.html` file and run the application;
 
 ### Live demo
-Alternatively, you can run the app through the [live demo link](https://github.com/VanessaAoki/To-Do-List/settings/pages).
+Alternatively, you can run the app through the [live demo link](https://vanessaaoki.github.io/To-Do-List/).
 
 ## Author
 

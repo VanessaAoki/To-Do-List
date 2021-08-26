@@ -44,8 +44,9 @@ export function renderList() {
       const newDescription = pDescription.value;
       if (e.keyCode === 13) {
         const oldToDo = JSON.parse(localStorage.getItem('myToDo'));
-        oldToDo[todo.index].description = newDescription;
+        oldToDo[todo.index-1].description = newDescription;
         localStorage.setItem('myToDo', JSON.stringify(oldToDo));
+        renderList();
       }
     });
     // div .buttons-container
