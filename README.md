@@ -66,6 +66,10 @@ Alternatively, you can run the app through the [live demo link](https://github.c
 - Twitter: [@VanessaSAoki](https://twitter.com/VanessaSAoki)
 - Linkedin: [Vanessa Aoki](https://www.linkedin.com/in/vanessasaoki/)
 
+## Acknowledgments
+
+Shoutouts to [Nelsino Francisco](https://github.com/nelsinofrancisco), all tests and lots of codes improvements were written with him!
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
