@@ -14,7 +14,7 @@ let toDoButton = document.getElementById('submit-button');
 let toDoClear = document.getElementById('to-do-clear');
 
 // Functions
-function renderList() {
+export function renderList() {
   const list = document.getElementById('to-do-list');
   list.innerHTML = '';
   myToDo.forEach((todo) => {
@@ -72,9 +72,9 @@ function renderList() {
   });
 }
 
-function updateLocalStorage() {
+export function updateLocalStorage() {
   localStorage.setItem('myToDo', JSON.stringify(myToDo));
-  myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
+  // myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
   // global.document.location.reload();
   renderList();
 }
@@ -88,7 +88,7 @@ function updateIndex() {
   updateLocalStorage();
 }
 
-function deleteTodo(index) {
+export function deleteTodo(index) {
   myToDo.splice(index, 1);
   updateIndex();
 }
@@ -104,7 +104,7 @@ function clearCompleted() {
   updateLocalStorage();
 }
 
-function addToDo(e) {
+export function addToDo(e) {
   // e.preventDefault();
   const toDoInput = document.getElementById('to-do-input');
   const list = document.getElementById('to-do-list');
@@ -128,12 +128,3 @@ document.addEventListener('DOMContentLoaded', () => {
   toDoButton.addEventListener('click', addToDo);
   toDoClear.addEventListener('click', clearCompleted);
 });
-
-// Jest exports
-module.exports = {
-  addToDo,
-  deleteTodo,
-  renderList,
-  updateIndex,
-  updateLocalStorage,
-};

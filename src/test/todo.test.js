@@ -1,6 +1,6 @@
-const {
+import {
   addToDo, deleteTodo, renderList,
-} = require('../todo');
+} from '../todo';
 
 describe('add and delete items', () => {
   test('Add one new item to the list', () => {
