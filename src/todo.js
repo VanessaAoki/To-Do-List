@@ -16,6 +16,7 @@ let toDoClear = document.getElementById('to-do-clear');
 // Functions
 export function renderList() {
   const list = document.getElementById('to-do-list');
+  myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
   list.innerHTML = '';
   myToDo.forEach((todo) => {
     // li .task-container
@@ -80,7 +81,7 @@ export function updateLocalStorage() {
 }
 
 function updateIndex() {
-  let counter = 0;
+  let counter = 1;
   myToDo.forEach((todo) => {
     todo.index = counter;
     counter++;
@@ -97,8 +98,8 @@ function showButtons(index) {
   document.querySelector(`.buttons-container-${index}`).classList.toggle('hidden');
 }
 
-function clearCompleted() {
-  myToDo = JSON.parse(localStorage.myToDo);
+export function clearCompleted() {
+  myToDo = JSON.parse(localStorage.getItem('myToDo'));
   myToDo = myToDo.filter((todo) => (todo.completed === false));
   updateIndex();
   updateLocalStorage();
@@ -109,7 +110,7 @@ export function addToDo(e) {
   const toDoInput = document.getElementById('to-do-input');
   const list = document.getElementById('to-do-list');
   const description = toDoInput.value;
-  const index = myToDo.length;
+  const index = myToDo.length + 1;
   myToDo.push({
     description,
     completed: false,

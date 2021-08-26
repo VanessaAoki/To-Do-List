@@ -4,7 +4,7 @@
   "description": "\"To-do list\" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.",
   "private": true,
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "start": "webpack serve --open",
     "build": "webpack",
     "deploy": "npm run build && gh-pages -d dist"
@@ -45,19 +45,5 @@
     "jsdom": "^17.0.0",
     "lodash": "^4.17.21"
   },
-  "main": "webpack.config.js",
-  "jest": {
-    "verbose": true,
-    "preset": "react-native",
-    "setupFiles": [
-      "./jest/setup.js"
-    ],
-    "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|lottie-react-native)"
-    ],
-    "globals": {
-      "window": {}
-    }
-  }
+  "main": "webpack.config.js"
 }

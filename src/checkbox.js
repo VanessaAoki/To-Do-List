@@ -1,6 +1,10 @@
-export default function checkTodo(todo) {
+import {
+ renderList,
+} from './todo';
+
+export function checkTodo(todo) {
   const todos = JSON.parse(localStorage.getItem('myToDo'));
-  const todoIndex = todos.findIndex((item) => item.description === todo.children[1].value);
+  const todoIndex = todos.findIndex((item) => item.description === todo.value);
   todos[todoIndex].completed = !todos[todoIndex].completed;
   localStorage.setItem('myToDo', JSON.stringify(todos));
 }
@@ -12,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (item.classList[0] === 'checkbox-input') {
       const item2 = item.parentElement;
       item2.classList.toggle('completed-task');
-      checkTodo(item2);
+      const item3 = item.parentElement.children[1];
+      checkTodo(item3);
+      renderList();
     }
   });
 });
