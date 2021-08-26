@@ -14,8 +14,9 @@ let toDoButton = document.getElementById('submit-button');
 let toDoClear = document.getElementById('to-do-clear');
 
 // Functions
-function renderList() {
+export function renderList() {
   const list = document.getElementById('to-do-list');
+  myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
   list.innerHTML = '';
   myToDo.forEach((todo) => {
     // li .task-container
@@ -42,7 +43,7 @@ function renderList() {
     pDescription.addEventListener('keydown', (e) => {
       const newDescription = pDescription.value;
       if (e.keyCode === 13) {
-        const oldToDo = JSON.parse(localStorage.myToDo);
+        const oldToDo = JSON.parse(localStorage.getItem('myToDo'));
         oldToDo[todo.index].description = newDescription;
         localStorage.setItem('myToDo', JSON.stringify(oldToDo));
       }
@@ -72,15 +73,15 @@ function renderList() {
   });
 }
 
-function updateLocalStorage() {
+export function updateLocalStorage() {
   localStorage.setItem('myToDo', JSON.stringify(myToDo));
-  myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
+  // myToDo = JSON.parse(localStorage.getItem('myToDo')) || [];
   // global.document.location.reload();
   renderList();
 }
 
 function updateIndex() {
-  let counter = 0;
+  let counter = 1;
   myToDo.forEach((todo) => {
     todo.index = counter;
     counter++;
@@ -88,7 +89,7 @@ function updateIndex() {
   updateLocalStorage();
 }
 
-function deleteTodo(index) {
+export function deleteTodo(index) {
   myToDo.splice(index, 1);
   updateIndex();
 }
@@ -97,19 +98,19 @@ function showButtons(index) {
   document.querySelector(`.buttons-container-${index}`).classList.toggle('hidden');
 }
 
-function clearCompleted() {
-  myToDo = JSON.parse(localStorage.myToDo);
+export function clearCompleted() {
+  myToDo = JSON.parse(localStorage.getItem('myToDo'));
   myToDo = myToDo.filter((todo) => (todo.completed === false));
   updateIndex();
   updateLocalStorage();
 }
 
-function addToDo(e) {
+export function addToDo(e) {
   // e.preventDefault();
   const toDoInput = document.getElementById('to-do-input');
   const list = document.getElementById('to-do-list');
   const description = toDoInput.value;
-  const index = myToDo.length;
+  const index = myToDo.length + 1;
   myToDo.push({
     description,
     completed: false,
@@ -128,12 +129,3 @@ document.addEventListener('DOMContentLoaded', () => {
   toDoButton.addEventListener('click', addToDo);
   toDoClear.addEventListener('click', clearCompleted);
 });
-
-// Jest exports
-module.exports = {
-  addToDo,
-  deleteTodo,
-  renderList,
-  updateIndex,
-  updateLocalStorage,
-};
