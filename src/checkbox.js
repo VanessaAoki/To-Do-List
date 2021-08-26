@@ -1,8 +1,9 @@
+// eslint-disable-next-line import/no-cycle
 import {
- renderList,
+  renderList,
 } from './todo';
 
-export function checkTodo(todo) {
+export default function checkTodo(todo) {
   const todos = JSON.parse(localStorage.getItem('myToDo'));
   const todoIndex = todos.findIndex((item) => item.description === todo.value);
   todos[todoIndex].completed = !todos[todoIndex].completed;

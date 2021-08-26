@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+import { describe, expect } from '@jest/globals';
 import {
   addToDo, deleteTodo, renderList, clearCompleted,
 } from '../todo';
@@ -5,6 +7,8 @@ import {
 import {
   checkTodo,
 } from '../checkbox';
+
+import { inputEvent } from './mockInputChange';
 
 describe('Add and delete items', () => {
   test('Add one new item to the list', () => {
@@ -50,9 +54,32 @@ describe('Delete all completed tasks', () => {
     renderList();
     const inputMock1 = document.querySelector('.description-1');
     checkTodo(inputMock1);
-    const inputMock2  = document.querySelector('.description-2');
+    const inputMock2 = document.querySelector('.description-2');
     checkTodo(inputMock2);
     clearCompleted();
     expect(JSON.parse(localStorage.getItem('myToDo'))).toHaveLength(3);
   });
+});
+
+describe('Edit task description value', () => {
+  test('change first task description value to Feed cat in local Storage',
+    () => {
+      const instanceMock = jest.spyOn(inputEvent, 'instance');
+      const list = JSON.parse(localStorage.getItem('myToDo'));
+      const pDescription = document.querySelector('.description-3');
+
+      pDescription.addEventListener = jest
+        .fn()
+        .mockImplementationOnce((event, callback) => {
+          callback();
+        });
+
+      inputEvent.init(list, 'Feed Cat', 0);
+      expect(pDescription.addEventListener).toBeCalledWith(
+        'keydown',
+        expect.any(Function),
+      );
+      expect(instanceMock).toBeCalledTimes(1);
+      expect(JSON.parse(localStorage.getItem('myToDo'))[0].description).toBe('Feed Cat');
+    });
 });

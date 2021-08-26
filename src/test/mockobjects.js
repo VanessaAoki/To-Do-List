@@ -23,7 +23,7 @@ const myToDoMock = [
     description: 'Play games',
     completed: false,
     index: 5,
-  }
+  },
 ];
 
 Object.defineProperty(global, 'myToDoMock', {

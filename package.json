@@ -41,6 +41,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@jest/globals": "^27.0.6",
     "jdom": "^3.2.1",
     "jsdom": "^17.0.0",
     "lodash": "^4.17.21"

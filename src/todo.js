@@ -43,7 +43,7 @@ export function renderList() {
     pDescription.addEventListener('keydown', (e) => {
       const newDescription = pDescription.value;
       if (e.keyCode === 13) {
-        const oldToDo = JSON.parse(localStorage.myToDo);
+        const oldToDo = JSON.parse(localStorage.getItem('myToDo'));
         oldToDo[todo.index].description = newDescription;
         localStorage.setItem('myToDo', JSON.stringify(oldToDo));
       }
